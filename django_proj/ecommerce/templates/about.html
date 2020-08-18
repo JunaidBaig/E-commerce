@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar bg-light sticky-top">
+        <div class="container header">
+            <h1>JayBi</h1>
+            <div class="right-head">
+                <a href="/">Home</a>
+                <a href="/shop">Shop</a>
+                <a href="upload">Sell</a>
+                <a href="/about">About</span>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="logo-head">
+                {% if user.is_authenticated%} Hi, {{ user }}
+                <a href="/logout">Logout</a> {% elif 'user_id' in request.session %} Hi, {{ request.session.first_name }}
+                <a href="/logout">Logout</a> {% else %}
+                <img src="{% static '/img/pngwave.png' %}" alt="loginSymbol">
+                <a href="/signin">Login</a> {% endif %}
+
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+    <div class="container">
+        <div class="padding">
+            <h1 class="display-4">About Us</h1>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum, quod odio doloribus repellat obcaecati fugit deserunt aliquid error, quas, minima quam! Corporis, quam maxime. Cumque deserunt quia minima aperiam.</p>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum, quod odio doloribus repellat obcaecati fugit deserunt aliquid error, quas, minima quam! Corporis, quam maxime. Cumque deserunt quia minima aperiam.</p>
+        </div>
+    </div>
+    <div class="padding">
+        <nav class="navbar footer">
+            <div class="container col-9">
+                <div class="one">
+                    <h5>Buy</h5>
+                    <a href="#">Registration</a>
+                    <a href="#">Garage</a>
+                    <a href="#">Buying Help</a>
+                </div>
+                <div class="one">
+                    <h5>Sell</h5>
+                    <a href="#">Start selling</a>
+                    <a href="#">How to sell</a>
+
+                </div>
+                <div class="one">
+                    <h5>Help & Contact</h5>
+                    <a href="#">Email</a>
+                    <a href="#">Contact us</a>
+                    <a href="#">Returns</a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+</body>
+
+</html>

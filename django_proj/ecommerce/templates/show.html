@@ -1,0 +1,97 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+
+<body>
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %} {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissable">
+            <a href='' class="close" data-dismiss='alert' aria-label='close'>x</a> {{ message }}
+        </div>
+        {% else %}
+        <div class="alert alert-danger alert-dismissable">
+            <a href='' class="close" data-dismiss='alert' aria-label='close'>x</a> {{ message }}
+        </div>
+        {% endif %} {% endfor %}
+    </div>
+    {% endif %}
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container header">
+            <h1>JayBi</h1>
+            <div class="right-head">
+                <a href="/">Home</a>
+                <a href="/shop">Shop</a>
+                <a href="/upload">Sell</a>
+                <a href="/about">About</span>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="logo-head">
+                {% if not user.is_authenticated %}
+                <img src="{% static '/img/pngwave.png' %}" alt="loginSymbol">
+                <a href="/signin">Login</a> {%else%} Hi, {{ user }}
+                <a href="/logout">Logout</a> {%endif%}
+
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+    <hr>
+    <div class="container">
+        <img class="img-size" src="{{product.image.first.image.url  }}" alt="Image not found">
+        <div class="desc">
+            <p style="font-size: large; font-style: inherit;">{{ product.name }}</p>
+            <p style="font-style: italic;">{{ product.category}}</p>
+            <p>Description</p>
+            <p>{{ product.description }}</p>
+            {% if product.user_id.id == user_id %}
+            <a href="/delete/{{ product.id }}"> Delete Listing </a>
+            <a href="/edit/{{product.id}}"> Edit</a> {% endif %} {% if product.social_id.id == user_id %}
+            <a href="/delete/{{ product.id }}"> Delete Listing </a>
+            <a href="/edit/{{product.id}}"> Edit</a> {% endif %}
+
+            <input type="text" value="Send a message" class="form-control">
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row">{% for image in product.image.all %}
+                <img class="sub-size" src="{{image.image.url }}" alt=""> {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+    <div class="padding">
+        <nav class="navbar footer">
+            <div class="container col-9">
+                <div class="one">
+                    <h5>Buy</h5>
+                    <a href="/signin">Registration</a>
+                    <a href="#">Buying Help</a>
+                </div>
+                <div class="one">
+                    <h5>Sell</h5>
+                    <a href="/upload">Start selling</a>
+                    <a href="#">How to sell</a>
+
+                </div>
+                <div class="one">
+                    <h5>Help & Contact</h5>
+                    <a href="#">Email</a>
+                    <a href="#">Contact us</a>
+                    <a href="#">Returns</a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+</body>

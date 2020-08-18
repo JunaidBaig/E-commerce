@@ -1,0 +1,93 @@
+{% load socialaccount %} {% providers_media_js %}
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+    <title>Login</title>
+</head>
+
+<body>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %} {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissable">
+            <a href='' class="close" data-dismiss='alert' aria-label='close'>x</a> {{ message }}
+        </div>
+        {% else %}
+        <div class="alert alert-danger alert-dismissable">
+            <a href='' class="close" data-dismiss='alert' aria-label='close'>x</a> {{ message }}
+        </div>
+        {% endif %} {% endfor %}
+    </div>
+    {% endif %}
+    <!-- Navbar -->
+    <nav class="navbar bg-light sticky-top">
+        <div class="container header">
+            <h1>JayBi</h1>
+            <div class="right-head">
+                <a href="/">Home</a>
+                <a href="/shop">Shop</a>
+                <a href="upload">Sell</a>
+                <a href="/about">About</span>
+                    <a href="#">Contact Us</a>
+            </div>
+            <div class="logo-head">
+                {% if user.is_authenticated%} Hi, {{ user }}
+                <a href="/logout">Logout</a> {% elif 'user_id' in request.session %} Hi, {{ request.session.first_name }}
+                <a href="/logout">Logout</a> {% else %}
+                <img src="{% static '/img/pngwave.png' %}" alt="loginSymbol">
+                <a href="/signin">Login</a> {% endif %}
+
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+    <div class="container padding">
+        <div class="row">
+            <div class="col">
+                <h2>Register:</h2>
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <label for="first_name">First Name:</label>
+                    <input class="form-control" type="text" name="first_name">
+                    <label for="last_name">Last Name:</label>
+                    <input class="form-control" type="text" name="last_name">
+                    <label for="email">Email:</label>
+                    <input class="form-control" type="email" name="email">
+                    <label for="birthday">Birthday:</label>
+                    <input class="form-control" type="date" name="birthday">
+
+                    <label for="password">Password:</label>
+                    <input class="form-control" type="password" name="password">
+                    <label for="password_confirm">Confirm Password:</label>
+                    <input class="form-control" type="password" name="password_confirm">
+                    <input type="submit" value="Register" class="btn btn-success">
+                </form>
+            </div>
+            <div class="col">
+                <h2>Login:</h2>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <label for="email">Email:</label>
+                    <input class="form-control" type="email" name="email">
+                    <label for="password">Password:</label>
+                    <input class="form-control" type="password" name="password">
+                    <input type="submit" value="Login" class="btn btn-success">
+                    <button class="btn"><a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook Login</a></button>
+                    <button class="btn"><a href="{% provider_login_url 'google'%}">Google Login</a></button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

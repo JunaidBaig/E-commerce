@@ -1,0 +1,138 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#free {
+    color: rgb(48, 49, 50);
+    background-color: rgb(229, 229, 229);
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#image {
+    height: 300px;
+}
+
+.right-head {
+    width: 650px;
+    margin-top: 2%;
+}
+
+.right-head a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 9%;
+    color: black;
+    font-size: 20px;
+}
+
+.header img {
+    width: 15px;
+    height: 15px;
+    margin-left: 200px;
+}
+
+.one a,
+.one h5 {
+    display: block;
+    color: white;
+}
+
+.logo-head a {
+    color: black;
+}
+
+.footer {
+    background-color: rgb(59, 59, 59);
+}
+
+.padding {
+    padding-top: 100px;
+}
+
+#resize {
+    width: 250px;
+    height: 300px;
+    display: inline-block;
+}
+
+.desc,
+.post {
+    display: inline-block;
+}
+
+.desc {
+    width: 600px;
+    vertical-align: top;
+    padding-left: 100px;
+}
+
+.img-size {
+    width: 400px;
+    height: 400px;
+}
+
+.sub-size {
+    width: 200px;
+    height: 200px;
+    margin-left: 40px;
+}
+
+
+/* 
+html,
+body,
+header,
+.carousel {
+    height: 60vh;
+}
+
+@media (max-width: 740px) {
+    html,
+    body,
+    header,
+    .carousel {
+        height: 100vh;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+    html,
+    body,
+    header,
+    .carousel {
+        height: 100vh;
+    }
+}
+
+.view,
+body,
+html {
+    height: 100%
+} */
+
+
+/* 
+.carousel {
+    height: 50%
+}
+
+.carousel .carousel-inner,
+.carousel .carousel-inner .active,
+.carousel .carousel-inner .carousel-item {
+    height: 100%
+}
+
+@media (max-width:776px) {
+    .carousel {
+        height: 100%
+    }
+} */
